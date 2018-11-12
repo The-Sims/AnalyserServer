@@ -1,10 +1,12 @@
 package communication.messagehandlers;
 
 
+import clienthandler.IClientHandler;
+
 public class MessageHandlerFactory implements IMessageHandlerFactory {
 
     public IMessageHandler getHandler(String simpleType, Object serverHandlerIn) {
-        IServerHandlerMessenger serverHandler = (IServerHandlerMessenger) serverHandlerIn;
+        IClientHandler handler = (IClientHandler) serverHandlerIn;
 
         switch(simpleType){
             //case "MessageLobbyCreate":

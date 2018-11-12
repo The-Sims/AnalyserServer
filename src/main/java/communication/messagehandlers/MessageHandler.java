@@ -1,17 +1,13 @@
 package communication.messagehandlers;
 
+import clienthandler.IClientHandler;
 import com.google.gson.Gson;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 public abstract class MessageHandler<T> implements IMessageHandler {
-    IServerHandlerMessenger serverHandler;
     IClientHandler clientHandler;
-
-    public MessageHandler(IServerHandlerMessenger serverHandler){
-        this.serverHandler = serverHandler;
-    }
 
     public MessageHandler(IClientHandler clientHandler){
         this.clientHandler = clientHandler;
@@ -21,8 +17,8 @@ public abstract class MessageHandler<T> implements IMessageHandler {
         return clientHandler;
     }
 
-    public IServerHandlerMessenger getServerHandler() {
-        return serverHandler;
+    public IClientHandler getHandler() {
+        return clientHandler;
     }
 
     public void handleMessage(String data, String sessionId, Gson gson){
