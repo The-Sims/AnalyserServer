@@ -9,7 +9,7 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@ServerEndpoint(value="/submarine/websocket/")
+@ServerEndpoint(value="/analyserserver/websocket/")
 public class ServerWebsocket extends WebsocketBase implements IServerWebsocket {
 
     private static ArrayList<Session> sessions = new ArrayList<>();
@@ -31,6 +31,7 @@ public class ServerWebsocket extends WebsocketBase implements IServerWebsocket {
     public void onClose(CloseReason reason, Session session) {
         sessions.remove(session);
         Logger.getInstance().log("[Disconnected] SessionID:" + session.getId(), LogLevel.INFORMATION);
+        getHandler().processMessage(session.getId(), "disconnect", "disconnect");
     }
 
     @OnError

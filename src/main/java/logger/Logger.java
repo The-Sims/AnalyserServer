@@ -22,6 +22,10 @@ public class Logger implements ILogger {
     public void log(String message, LogLevel logLevel)
     {
         messages.add(new LogMessage(message, logLevel));
+        if (logLevel == LogLevel.ERROR || logLevel == LogLevel.FATAL || logLevel == LogLevel.WARNING)
+            System.out.println((char)27 + "[31m" + logLevel + ": " + message);
+        else
+            System.out.println((char)27 + "[34m" + logLevel + ": " + message);
     }
 
     public LogMessage getLastLog()
