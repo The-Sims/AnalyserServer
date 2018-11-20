@@ -1,10 +1,10 @@
 package communication.messages.filtermessages;
 
-public class UpdateSearchTermMessage {
+public class MessageUpdateSearchTerm {
     String searchTerm;
     boolean addTerm;//false: remove from list; true:add to list
 
-    public UpdateSearchTermMessage(String searchTerm, boolean addTerm){
+    public MessageUpdateSearchTerm(String searchTerm, boolean addTerm){
         this.searchTerm=searchTerm;
         this.addTerm=addTerm;
     }

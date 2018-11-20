@@ -12,6 +12,11 @@ public class MessageProcessor extends MessageProcessorBase {
 
     public void processMessage(String sessionId, String type, String data){
 
+        if(type.equals("disconnect")) {
+            clientHandler.disconnect(sessionId);
+            return;
+        }
+
         String simpleType = type.split("\\.")[type.split("\\.").length - 1];
 
         IMessageHandler handler = getMessageHandlerFactory().getHandler(simpleType, getHandler());
