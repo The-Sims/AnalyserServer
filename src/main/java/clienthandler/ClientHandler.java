@@ -120,7 +120,6 @@ public class ClientHandler implements IClientHandler {
         for(Filter f: filters){
             if (f.getFilterId().equals(id)){
                 filters.remove(f);
-                break;
             }
         }
     }
