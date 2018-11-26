@@ -3,6 +3,7 @@ package clienthandler;
 import communication.messagegenerator.IMessageGenerator;
 import models.Filter;
 import models.Incident;
+import models.Tip;
 
 import java.util.ArrayList;
 
@@ -20,40 +21,82 @@ public class ClientHandler implements IClientHandler {
     @Override
     public void tip(String origin, String sender, String message, String location) {
         //received from source, save in memory, send to operators
+        Incident incident = null;
+        for(Incident i: incidents){
+            if (i.getLocation().equals(location)){
+                incident = i;
+                break;
+            }
+        }
+        if (incident == null){
+            for (Incident i: confirmedIncidents){
+                if (i.getLocation().equals(location)){
+                    incident = i;
+                    break;
+                }
+            }
+        }
 
-        //todo tip: lots of magic about incidents and finding the correct one!
+        if (incident == null){
+            //no incident found, create a new one
+            int max = -1;
+            for(Incident i: incidents){
+                max = max<i.getIncidentId() ? max : i.getIncidentId();
+            }
+            for(Incident i: confirmedIncidents){
+                max = max<i.getIncidentId() ? max : i.getIncidentId();
+            }
+            //todo tip: generate incidentName
+            incident = new Incident(max+1, "??", location);
+            incident.addTip(new Tip(origin, sender, message, location));
+        }
+        else{
+            //incident found, add tip to incident
+            incident.addTip(new Tip(origin, sender, message, location));
+        }
+
+        messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
+        messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
     }
 
     @Override
     public void incidentConfirm(int incidentId, boolean accepted) {
         //received from operator, change incident to a confirmed one, broadcast
+        Incident incident = null;
         for(Incident i : incidents){
             if (i.getIncidentId() == incidentId){
                 if(accepted)
                     confirmedIncidents.add(i);
                 incidents.remove(i);
+                incident = i;
                 break;
             }
         }
-        //todo confirm incident: broadcast
+        messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
+        messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
     }
 
     @Override
     public void tipConfirm(int incidentId, int tipId, boolean accepted) {
         //received from operator or unit, set tip to confirm, broadcast
+        Incident incident = null;
         for(Incident i: incidents){
             if (i.getIncidentId() == incidentId){
                 i.confirmTip(tipId, accepted);
+                incident = i;
                 break;
             }
         }
         for(Incident i: confirmedIncidents){
             if (i.getIncidentId() == incidentId){
                 i.confirmTip(tipId, accepted);
+                incident =i;
                 break;
             }
         }
-        //todo confirm tip: broadcast
+        messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
+        messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
+
     }
 
     @Override
@@ -71,7 +114,11 @@ public class ClientHandler implements IClientHandler {
         else if (!exists && addTerm)
             searchTerms.add(searchTerm);
 
-        //todo updatesearchterms: send info to bots
+        ArrayList<String> filterIds = new ArrayList<>();
+        for(Filter f: filters){
+            filterIds.add(f.getFilterId());
+        }
+        messageGenerator.sendUpdateSearchTerm(filterIds, addTerm, searchTerm);
     }
 
     @Override
@@ -89,14 +136,28 @@ public class ClientHandler implements IClientHandler {
     @Override
     public void subscribe(String unitId, int incidentId, boolean subscribe){
         //received from unit, add or remove id from incident depending on subscription, then send info (if subscribed)
+        Incident incident = null;
         for(Incident i: incidents){
             if (i.getIncidentId() == incidentId) {
                 i.subscribe(unitId, subscribe);
+                incident = i;
                 break;
             }
         }
-
-        //todo subsribe: send info if subscribed
+        if (incident == null){
+            for(Incident i: confirmedIncidents){
+                if (i.getIncidentId() == incidentId) {
+                    i.subscribe(unitId, subscribe);
+                    incident = i;
+                    break;
+                }
+            }
+        }
+        if (incident != null) {
+            ArrayList<String> id = new ArrayList<>();
+            id.add(unitId);
+            messageGenerator.sendSubscribeInfo(id, incident);
+        }
     }
 
     @Override
@@ -107,7 +168,7 @@ public class ClientHandler implements IClientHandler {
                 return;
         }
         operatorIds.add(operatorId);
-        //todo connectAsOperator: send info
+        messageGenerator.sendIncidentUpdate(operatorId, incidents, confirmedIncidents);
     }
 
     @Override
@@ -132,6 +193,6 @@ public class ClientHandler implements IClientHandler {
                 return;
         }
         filters.add(new Filter(filterId, filterName));
-        //todo connectAsFilter: send info
+        messageGenerator.sendUpdateSearchTerms(filterId, searchTerms);
     }
 }

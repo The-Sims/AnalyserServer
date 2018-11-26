@@ -18,6 +18,16 @@ public class Incident {
     }
 
     public void addTip(Tip tip){
+        if (tip.getTipId() == -1){
+            int max = -1;
+            for(Tip t: tips){
+                max = max<t.getTipId() ? max : t.getTipId();
+            }
+            for(Tip t: confirmedTips){
+                max = max<t.getTipId() ? max : t.getTipId();
+            }
+            tip.setTipId(max+1);
+        }
         tips.add(tip);
     }
 
@@ -48,5 +58,13 @@ public class Incident {
                 break;
             }
         }
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public ArrayList<String> getSubscribedIds() {
+        return subscribedIds;
     }
 }
