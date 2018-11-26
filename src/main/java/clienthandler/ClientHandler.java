@@ -21,7 +21,7 @@ public class ClientHandler implements IClientHandler {
     public void tip(String origin, String sender, String message, String location) {
         //received from source, save in memory, send to operators
 
-        //todo lots of magic about incidents and finding the correct one!
+        //todo tip: lots of magic about incidents and finding the correct one!
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ClientHandler implements IClientHandler {
                 break;
             }
         }
-        //todo broadcast
+        //todo confirm incident: broadcast
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ClientHandler implements IClientHandler {
                 break;
             }
         }
-        //todo broadcast
+        //todo confirm tip: broadcast
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ClientHandler implements IClientHandler {
         else if (!exists && addTerm)
             searchTerms.add(searchTerm);
 
-        //todo send info to bots
+        //todo updatesearchterms: send info to bots
     }
 
     @Override
@@ -83,7 +83,7 @@ public class ClientHandler implements IClientHandler {
                 break;
             }
         }
-        //todo broadcast
+        //todo conclude incident: broadcast
     }
 
     @Override
@@ -96,7 +96,7 @@ public class ClientHandler implements IClientHandler {
             }
         }
 
-        //todo send info if subscribed
+        //todo subsribe: send info if subscribed
     }
 
     @Override
@@ -107,7 +107,7 @@ public class ClientHandler implements IClientHandler {
                 return;
         }
         operatorIds.add(operatorId);
-        //todo send info
+        //todo connectAsOperator: send info
     }
 
     @Override
@@ -132,6 +132,6 @@ public class ClientHandler implements IClientHandler {
                 return;
         }
         filters.add(new Filter(filterId, filterName));
-        //todo send info
+        //todo connectAsFilter: send info
     }
 }
