@@ -41,13 +41,14 @@ public class ClientHandler implements IClientHandler {
             //no incident found, create a new one
             int max = -1;
             for(Incident i: incidents){
-                max = max<i.getIncidentId() ? max : i.getIncidentId();
+                max = max>i.getIncidentId() ? max : i.getIncidentId();
             }
             for(Incident i: confirmedIncidents){
-                max = max<i.getIncidentId() ? max : i.getIncidentId();
+                max = max>i.getIncidentId() ? max : i.getIncidentId();
             }
             //todo tip: generate incidentName
             incident = new Incident(max+1, "??", location);
+            incidents.add(incident);
             incident.addTip(new Tip(origin, sender, message, location));
         }
         else{
@@ -181,6 +182,7 @@ public class ClientHandler implements IClientHandler {
         for(Filter f: filters){
             if (f.getFilterId().equals(id)){
                 filters.remove(f);
+                break;
             }
         }
     }
@@ -188,6 +190,9 @@ public class ClientHandler implements IClientHandler {
     @Override
     public void connectAsFilter(String filterId, String filterName){
         //add id to list, send filterInformation to said id
+
+        searchTerms.add("REEEEEE");
+        searchTerms.add("Flikker");
         for(Filter f: filters){
             if (f.getFilterId().equals(filterId))
                 return;

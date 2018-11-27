@@ -21,10 +21,10 @@ public class Incident {
         if (tip.getTipId() == -1){
             int max = -1;
             for(Tip t: tips){
-                max = max<t.getTipId() ? max : t.getTipId();
+                max = max>t.getTipId() ? max : t.getTipId();
             }
             for(Tip t: confirmedTips){
-                max = max<t.getTipId() ? max : t.getTipId();
+                max = max>t.getTipId() ? max : t.getTipId();
             }
             tip.setTipId(max+1);
         }

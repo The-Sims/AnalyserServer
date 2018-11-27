@@ -5,5 +5,6 @@ public enum LogLevel {
     INFORMATION,
     WARNING,
     ERROR,
-    FATAL
+    FATAL,
+    RECEIVEDMESSAGE
 }

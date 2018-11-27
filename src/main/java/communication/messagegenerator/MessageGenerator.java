@@ -4,6 +4,7 @@ import communication.messages.filtermessages.MessageSendSearchTerms;
 import communication.messages.filtermessages.MessageUpdateSearchTerm;
 import communication.messages.sharedmessages.MessageUpdateIncident;
 import communication.messages.sharedmessages.MessageUpdateIncidents;
+import communication.messages.unitmessages.MessageIncidentConclude;
 import communication.websockets.IServerWebsocket;
 import models.Incident;
 
@@ -49,5 +50,10 @@ public class MessageGenerator implements IMessageGenerator {
         temp = ids.toArray(temp);
         MessageUpdateIncident msg = new MessageUpdateIncident(incident, false);
         serverSocket.sendToGroup(temp, msg);
+    }
+
+    public void test(){
+        MessageIncidentConclude msg = new MessageIncidentConclude(3);
+        serverSocket.
     }
 }
