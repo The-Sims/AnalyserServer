@@ -1,22 +1,24 @@
 package models;
 
 public class Tip {
-    int tipId;
-    String origin;
+    int id;
+    Origin origin;
     String sender;
     String message;
     String location;
+    boolean confirmed;
 
-    public Tip(int tipId, String origin, String sender, String message, String location) {
-        this.tipId = tipId;
+    public Tip(int tipId, Origin origin, String sender, String message, String location, boolean accepted) {
+        this.id = tipId;
         this.origin = origin;
         this.sender = sender;
         this.message = message;
         this.location = location;
+        this.confirmed = accepted;
     }
 
-    public Tip(String origin, String sender, String message, String location) {
-        this.tipId = -1;
+    public Tip(Origin origin, String sender, String message, String location) {
+        this.id = 0;
         this.origin = origin;
         this.sender = sender;
         this.message = message;
@@ -24,10 +26,18 @@ public class Tip {
     }
 
     public int getTipId(){
-        return tipId;
+        return id;
     }
 
     public void setTipId(int tipId) {
-        this.tipId = tipId;
+        this.id = tipId;
+    }
+
+    public void setAccepted(){
+        confirmed = true;
+    }
+
+    public boolean getAccepted(){
+        return confirmed;
     }
 }

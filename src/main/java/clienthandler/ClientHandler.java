@@ -1,27 +1,36 @@
 package clienthandler;
 
 import communication.messagegenerator.IMessageGenerator;
+import communication.rest.IREST;
+import communication.rest.RESTClientHandler;
+import logger.LogLevel;
+import logger.Logger;
 import models.Filter;
 import models.Incident;
+import models.Origin;
 import models.Tip;
 
 import java.util.ArrayList;
 
 public class ClientHandler implements IClientHandler {
 
+    IREST restClientHandler = new RESTClientHandler();
     IMessageGenerator messageGenerator;
     ArrayList<Filter> filters = new ArrayList<>();
     ArrayList<String> searchTerms = new ArrayList<>();
     ArrayList<Incident> confirmedIncidents = new ArrayList<>();
+    ArrayList<Incident> concludedIncidents = new ArrayList<>();
     ArrayList<Incident> incidents = new ArrayList<>();
     ArrayList<String> operatorIds = new ArrayList<>();
 
     public ClientHandler(IMessageGenerator messageGenerator){this.messageGenerator=messageGenerator;}
 
     @Override
-    public void tip(String origin, String sender, String message, String location) {
+    public void tip(Origin origin, String sender, String message, String location) {
         //received from source, save in memory, send to operators
         Incident incident = null;
+        Tip tip = new Tip(origin, sender, message, location);
+
         for(Incident i: incidents){
             if (i.getLocation().equals(location)){
                 incident = i;
@@ -38,24 +47,27 @@ public class ClientHandler implements IClientHandler {
         }
 
         if (incident == null){
+            for (Incident i: concludedIncidents){
+                if (i.getLocation().equals(location)){
+                    return;
+                }
+            }
+        }
+
+        if (incident == null){
             //no incident found, create a new one
-            int max = -1;
-            for(Incident i: incidents){
-                max = max>i.getIncidentId() ? max : i.getIncidentId();
-            }
-            for(Incident i: confirmedIncidents){
-                max = max>i.getIncidentId() ? max : i.getIncidentId();
-            }
-            //todo tip: generate incidentName
-            incident = new Incident(max+1, "??", location);
+            incident = new Incident(location);
+            incident = restClientHandler.saveIncident(incident);
             incidents.add(incident);
-            incident.addTip(new Tip(origin, sender, message, location));
+            incident.addTip(tip);
+            Logger.getInstance().log(String.valueOf(incident.getIncidentId()), LogLevel.FATAL);
         }
         else{
             //incident found, add tip to incident
-            incident.addTip(new Tip(origin, sender, message, location));
+            incident.addTip(tip);
         }
-
+        incident = restClientHandler.saveIncident(incident);
+        Logger.getInstance().log("Done REST'ing incident", LogLevel.INFORMATION);
         messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
         messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
     }
@@ -73,6 +85,7 @@ public class ClientHandler implements IClientHandler {
                 break;
             }
         }
+        restClientHandler.saveIncident(incident);
         messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
         messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
     }
@@ -88,13 +101,15 @@ public class ClientHandler implements IClientHandler {
                 break;
             }
         }
-        for(Incident i: confirmedIncidents){
-            if (i.getIncidentId() == incidentId){
+        for(Incident i: confirmedIncidents) {
+            if (i.getIncidentId() == incidentId) {
                 i.confirmTip(tipId, accepted);
-                incident =i;
+                incident = i;
                 break;
             }
         }
+        restClientHandler.saveIncident(incident);
+
         messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
         messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
 
@@ -128,6 +143,7 @@ public class ClientHandler implements IClientHandler {
         for (Incident i: confirmedIncidents){
             if (i.getIncidentId() == incidentId) {
                 confirmedIncidents.remove(i);
+                concludedIncidents.add(i);
                 break;
             }
         }
@@ -137,6 +153,7 @@ public class ClientHandler implements IClientHandler {
     @Override
     public void subscribe(String unitId, int incidentId, boolean subscribe){
         //received from unit, add or remove id from incident depending on subscription, then send info (if subscribed)
+        Logger.getInstance().log("Subscribing " + unitId, LogLevel.ERROR);
         Incident incident = null;
         for(Incident i: incidents){
             if (i.getIncidentId() == incidentId) {
@@ -190,9 +207,6 @@ public class ClientHandler implements IClientHandler {
     @Override
     public void connectAsFilter(String filterId, String filterName){
         //add id to list, send filterInformation to said id
-
-        searchTerms.add("REEEEEE");
-        searchTerms.add("Flikker");
         for(Filter f: filters){
             if (f.getFilterId().equals(filterId))
                 return;

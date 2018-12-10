@@ -1,7 +1,9 @@
 package clienthandler;
 
+import models.Origin;
+
 public interface IClientHandler {
-    void tip(String origin, String sender, String message, String location);
+    void tip(Origin origin, String sender, String message, String location);
     void incidentConfirm(int incidentId, boolean accepted);
     void tipConfirm(int incidentId, int tipId, boolean accepted);
     void updateSearchTerms(String searchTerm, boolean addTerm);

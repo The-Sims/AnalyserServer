@@ -1,37 +1,43 @@
 package models;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Incident {
 
-    int incidentId;
-    String incidentName;
-    String location;
-    ArrayList<Tip> confirmedTips = new ArrayList<>();
+    int id;
+    String place;
     ArrayList<Tip> tips = new ArrayList<>();
     ArrayList<String> subscribedIds = new ArrayList<>();
+    Date createDate = new Date();
+    Date modifyDate = new Date();
+    Category category = new Category(1, "Explosie");
+    boolean live = true;
+    boolean confirmed;
+    List<IncidentDescription> descriptions = new ArrayList<>();
+    List<ReinforceInfo> reinforceInfo = new ArrayList<>();
 
-    public Incident(int incidentId, String incidentName, String location){
-        this.incidentId = incidentId;
-        this.incidentName = incidentName;
-        this.location = location;
+
+    public Incident(int incidentId, String location){
+        this.id = incidentId;
+        this.place = location;
+    }
+
+    public Incident(String location){
+        this.place = location;
     }
 
     public void addTip(Tip tip){
-        if (tip.getTipId() == -1){
-            int max = -1;
-            for(Tip t: tips){
-                max = max>t.getTipId() ? max : t.getTipId();
-            }
-            for(Tip t: confirmedTips){
-                max = max>t.getTipId() ? max : t.getTipId();
-            }
-            tip.setTipId(max+1);
-        }
+        if (tips == null)
+            tips = new ArrayList<>();
         tips.add(tip);
     }
 
     public void subscribe(String id, boolean subscribe){
+        if (subscribedIds == null)
+            subscribedIds = new ArrayList<>();
         boolean exists = false;
         for(String i: subscribedIds){
             if (i.equals(id)) {
@@ -46,25 +52,44 @@ public class Incident {
     }
 
     public int getIncidentId(){
-        return incidentId;
+        return id;
     }
 
-    public void confirmTip(int tipId, boolean accepted){
+    public Tip confirmTip(int tipId, boolean accepted){
         for(Tip t : tips){
             if (t.getTipId() == tipId){
-                if(accepted)
-                    confirmedTips.add(t);
-                tips.remove(t);
-                break;
+                t.setAccepted();
+                if(!accepted)
+                    tips.remove(t);
+                return t;
             }
         }
+        return null;
     }
 
     public String getLocation() {
-        return location;
+        return place;
     }
 
     public ArrayList<String> getSubscribedIds() {
         return subscribedIds;
+    }
+
+    public ArrayList<Tip> getTips() {
+        ArrayList<Tip> temp = new ArrayList<>();
+        for(Tip t:tips){
+            if (!t.getAccepted())
+                temp.add(t);
+        }
+        return temp;
+    }
+
+    public ArrayList<Tip> getConfirmedTips(){
+        ArrayList<Tip> temp = new ArrayList<>();
+        for(Tip t:tips){
+            if (t.getAccepted())
+                temp.add(t);
+        }
+        return temp;
     }
 }

@@ -44,6 +44,8 @@ public class ServerWebsocket extends WebsocketBase implements IServerWebsocket {
     public void sendTo(String sessionId, Object object)
     {
         String msg = getEncapsulatingMessageGenerator().generateMessageString(object);
+        Logger.getInstance().log("[Sending message] " + msg, LogLevel.DEBUG);
+        Logger.getInstance().log("[To] " + sessionId, LogLevel.DEBUG);
         sendToClient(getSessionFromId(sessionId), msg);
     }
 
@@ -74,7 +76,8 @@ public class ServerWebsocket extends WebsocketBase implements IServerWebsocket {
     {
         for (String sessionId : sessionIds){
             for(Session ses : sessions) {
-                if(!ses.getId().equals(sessionId))
+                Logger.getInstance().log(ses.getId(), LogLevel.DEBUG);
+                if(ses.getId().equals(sessionId))
                     sendTo(ses.getId(), object);
             }
         }

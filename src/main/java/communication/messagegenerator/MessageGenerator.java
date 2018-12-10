@@ -54,6 +54,5 @@ public class MessageGenerator implements IMessageGenerator {
 
     public void test(){
         MessageIncidentConclude msg = new MessageIncidentConclude(3);
-        serverSocket.
     }
 }
