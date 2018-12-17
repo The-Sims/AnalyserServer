@@ -7,7 +7,7 @@ import models.Tip;
 
 public class RESTClientHandler extends BaseRestClient implements IREST {
 
-    String url = "http://145.93.68.18:8094/";
+    String url = "http://145.93.68.49:8094/";
 
     public String getBaseUr() {
         return url;
@@ -17,14 +17,15 @@ public class RESTClientHandler extends BaseRestClient implements IREST {
         String query = "incident/save";
 
         Logger.getInstance().log("Saving incident", LogLevel.INFORMATION);
-        Incident i = executeQueryPost(incident, query, Incident.class);
+        //Incident i = executeQueryPost(incident, query, Incident.class);
 
         Logger.getInstance().log("converting incident", LogLevel.INFORMATION);
-        return i;
+        return incident;
     }
 
     public Incident getIncident(int incidentId){
         String query = "incident/";
-        return executeQueryGet(query + incidentId, Incident.class);
+        //return executeQueryGet(query + incidentId, Incident.class);
+        return null;
     }
 }

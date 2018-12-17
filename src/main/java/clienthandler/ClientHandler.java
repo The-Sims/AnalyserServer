@@ -23,7 +23,12 @@ public class ClientHandler implements IClientHandler {
     ArrayList<Incident> incidents = new ArrayList<>();
     ArrayList<String> operatorIds = new ArrayList<>();
 
-    public ClientHandler(IMessageGenerator messageGenerator){this.messageGenerator=messageGenerator;}
+    public ClientHandler(IMessageGenerator messageGenerator){
+        this.messageGenerator=messageGenerator;
+        searchTerms.add("Brand");
+        searchTerms.add("Bom");
+        searchTerms.add("Vuur");
+    }
 
     @Override
     public void tip(Origin origin, String sender, String message, String location) {
