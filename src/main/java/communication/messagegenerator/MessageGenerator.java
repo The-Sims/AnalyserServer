@@ -19,9 +19,11 @@ public class MessageGenerator implements IMessageGenerator {
     }
 
     @Override
-    public void sendIncidentUpdate(ArrayList<Incident> incidents, ArrayList<Incident> confirmedIncidents) {
+    public void sendIncidentUpdate(ArrayList<String> operators, ArrayList<Incident> incidents, ArrayList<Incident> confirmedIncidents) {
+        String[] temp = new String[operators.size()];
+        temp = operators.toArray(temp);
         MessageUpdateIncidents msg = new MessageUpdateIncidents(incidents, confirmedIncidents);
-        serverSocket.broadcast(msg);
+        serverSocket.sendToGroup(temp, msg);
     }
 
     @Override

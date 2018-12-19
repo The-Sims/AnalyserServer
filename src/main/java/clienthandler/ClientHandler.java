@@ -65,7 +65,6 @@ public class ClientHandler implements IClientHandler {
             incident = restClientHandler.saveIncident(incident);
             incidents.add(incident);
             incident.addTip(tip);
-            Logger.getInstance().log(String.valueOf(incident.getIncidentId()), LogLevel.FATAL);
         }
         else{
             //incident found, add tip to incident
@@ -74,7 +73,7 @@ public class ClientHandler implements IClientHandler {
         incident = restClientHandler.saveIncident(incident);
         Logger.getInstance().log("Done REST'ing incident", LogLevel.INFORMATION);
         messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
-        messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
+        messageGenerator.sendIncidentUpdate(operatorIds, incidents, confirmedIncidents);
     }
 
     @Override
@@ -92,7 +91,7 @@ public class ClientHandler implements IClientHandler {
         }
         restClientHandler.saveIncident(incident);
         messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
-        messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
+        messageGenerator.sendIncidentUpdate(operatorIds, incidents, confirmedIncidents);
     }
 
     @Override
@@ -116,7 +115,7 @@ public class ClientHandler implements IClientHandler {
         restClientHandler.saveIncident(incident);
 
         messageGenerator.sendSubscribeInfo(incident.getSubscribedIds(), incident);
-        messageGenerator.sendIncidentUpdate(incidents, confirmedIncidents);
+        messageGenerator.sendIncidentUpdate(operatorIds, incidents, confirmedIncidents);
 
     }
 

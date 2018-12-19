@@ -1,6 +1,7 @@
 package communication.websockets;
 
 import communication.messages.EncapsulatingMessage;
+import communication.messages.operatormessages.MessageConnectAsOperator;
 import logger.LogLevel;
 import logger.Logger;
 
@@ -18,6 +19,9 @@ public class ServerWebsocket extends WebsocketBase implements IServerWebsocket {
     public void onConnect(Session session) {
         sessions.add(session);
         Logger.getInstance().log("[Connected] SessionID:" + session.getId(), LogLevel.INFORMATION);
+
+        Object object = new MessageConnectAsOperator();
+        sendTo(session.getId(), object);
     }
 
     @OnMessage
@@ -27,6 +31,9 @@ public class ServerWebsocket extends WebsocketBase implements IServerWebsocket {
         Logger.getInstance().log(sessionId + " send: " + message, LogLevel.RECEIVEDMESSAGE);
         EncapsulatingMessage msg = getGson().fromJson(message, EncapsulatingMessage.class);
         getHandler().processMessage(sessionId, msg.getMessageType(), msg.getMessageData());
+
+        Object object = new MessageConnectAsOperator();
+        sendTo(session.getId(), object);
     }
 
     @OnClose

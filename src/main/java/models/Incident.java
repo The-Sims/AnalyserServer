@@ -13,11 +13,11 @@ public class Incident {
     ArrayList<String> subscribedIds = new ArrayList<>();
     Date createDate = new Date();
     Date modifyDate = new Date();
-    Category category = new Category(1, "Explosie");
+    Category category = new Category(2, "Brand");
     boolean live = true;
     boolean confirmed;
-    List<IncidentDescription> descriptions = new ArrayList<>();
-    List<ReinforceInfo> reinforceInfo = new ArrayList<>();
+    List<IncidentDescription> incidentDescription = new ArrayList<>();
+    List<ReinforceInfo> reinforcementInfo = new ArrayList<>();
 
 
     public Incident(int incidentId, String location){
