@@ -37,8 +37,10 @@ public abstract class BaseRestClient {
              CloseableHttpResponse response = httpClient.execute(request);) {
 
             HttpEntity entity = response.getEntity();
-            final String entityString = EntityUtils.toString(entity);
-            Logger.getInstance().log(entityString, LogLevel.INFORMATION);
+            String entityString = EntityUtils.toString(entity);
+            entityString = entityString.replaceAll("\\\\", "").substring(1);
+            entityString = entityString.substring(0, entityString.length()-1);
+            Logger.getInstance().log(entityString, LogLevel.RECEIVEDMESSAGE);
             return gson.fromJson(entityString, clazz);
         } catch (IOException | JsonSyntaxException e) {
             Logger.getInstance().log(e);
@@ -58,13 +60,12 @@ public abstract class BaseRestClient {
         StringEntity params;
         try {
             String json = gson.toJson(request);
-            Logger.getInstance().log(json, LogLevel.INFORMATION);
+            Logger.getInstance().log(json, LogLevel.DEBUG);
             params = new StringEntity(json);
             httpPost.setEntity(params);
         } catch (UnsupportedEncodingException ex) {
             Logger.getInstance().log(ex);
         }
-
         return executeRequest(httpPost, clazz);
     }
 

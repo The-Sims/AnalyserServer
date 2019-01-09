@@ -8,16 +8,16 @@ import java.util.List;
 public class Incident {
 
     int id;
-    String place;
-    ArrayList<Tip> tips = new ArrayList<>();
-    ArrayList<String> subscribedIds = new ArrayList<>();
+    List<IncidentDescription> incidentDescription = new ArrayList<>();
     Date createDate = new Date();
     Date modifyDate = new Date();
     Category category = new Category(2, "Brand");
+    String place;
     boolean live = true;
     boolean confirmed;
-    List<IncidentDescription> incidentDescription = new ArrayList<>();
     List<ReinforceInfo> reinforcementInfo = new ArrayList<>();
+    ArrayList<Tip> tips = new ArrayList<>();
+    ArrayList<String> subscribedIds = new ArrayList<>();
 
 
     public Incident(int incidentId, String location){
