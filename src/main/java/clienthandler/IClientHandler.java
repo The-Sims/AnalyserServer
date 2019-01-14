@@ -1,5 +1,6 @@
 package clienthandler;
 
+import models.Incident;
 import models.Origin;
 
 public interface IClientHandler {
@@ -12,4 +13,5 @@ public interface IClientHandler {
     void connectAsOperator(String operatorId);
     void disconnect(String id);
     void connectAsFilter(String filterId, String filterName);
+    void updateIncident(Incident incident);
 }

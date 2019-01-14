@@ -31,6 +31,8 @@ public class MessageHandlerFactory implements IMessageHandlerFactory {
                 return new MessageIncidentConcludeHandler(handler);
             case "MessageSubscribe":
                 return new MessageSubscribeHandler(handler);
+            case "MessageUpdateIncident":
+                return new MessageUpdateIncidentHandler(handler);
             default:
                 return null;
         }

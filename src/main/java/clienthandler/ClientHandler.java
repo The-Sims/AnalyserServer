@@ -77,6 +77,44 @@ public class ClientHandler implements IClientHandler {
     }
 
     @Override
+    public void updateIncident(Incident incident){
+        Incident saved = restClientHandler.saveIncident(incident);
+        Incident remove = null;
+        for(Incident i: incidents){
+            if (i.getIncidentId() == saved.getIncidentId())
+                remove = i;
+        }
+
+        if (remove != null){
+            incidents.remove(remove);
+            incidents.add(saved);
+        }
+
+        for(Incident i: concludedIncidents){
+            if (i.getIncidentId() == saved.getIncidentId())
+                remove = i;
+        }
+
+        if (remove != null){
+            concludedIncidents.remove(remove);
+            concludedIncidents.add(saved);
+        }
+
+        for(Incident i: confirmedIncidents){
+            if (i.getIncidentId() == saved.getIncidentId())
+                remove = i;
+        }
+
+        if (remove != null){
+            confirmedIncidents.remove(remove);
+            confirmedIncidents.add(saved);
+        }
+
+        messageGenerator.sendSubscribeInfo(saved.getSubscribedIds(), saved);
+        messageGenerator.sendIncidentUpdate(operatorIds, incidents, confirmedIncidents);
+    }
+
+    @Override
     public void incidentConfirm(int incidentId, boolean accepted) {
         //received from operator, change incident to a confirmed one, broadcast
         Incident incident = null;

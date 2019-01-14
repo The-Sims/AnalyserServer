@@ -19,4 +19,8 @@ public class EncapsulatingMessage {
     public String getMessageData(){
         return messageData;
     }
+
+    public void setMessageData(String messageData) {
+        this.messageData = messageData;
+    }
 }
