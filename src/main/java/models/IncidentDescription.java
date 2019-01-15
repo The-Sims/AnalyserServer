@@ -4,6 +4,6 @@ import java.util.Date;
 
 public class IncidentDescription {
     int id;
-    String description;
+    String message;
     Date date;
 }

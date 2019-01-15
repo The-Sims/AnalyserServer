@@ -7,7 +7,7 @@ import models.Tip;
 
 public class RESTClientHandler extends BaseRestClient implements IREST {
 
-    String url = "http://145.93.68.109:8094/";
+    String url = "http://145.93.68.148:8094/";
 
     public String getBaseUr() {
         return url;

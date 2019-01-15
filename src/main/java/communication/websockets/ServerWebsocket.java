@@ -29,7 +29,7 @@ public class ServerWebsocket extends WebsocketBase implements IServerWebsocket {
         String sessionId = session.getId();
         Logger.getInstance().log(sessionId + " send: " + message, LogLevel.RECEIVEDMESSAGE);
         EncapsulatingMessage msg = getGson().fromJson(message, EncapsulatingMessage.class);
-        //msg.setMessageData(msg.getMessageData().replaceAll("_", ""));
+        msg.setMessageData(msg.getMessageData().replaceAll("_", ""));
         Logger.getInstance().log(msg.getMessageData(), LogLevel.INFORMATION);
         getHandler().processMessage(sessionId, msg.getMessageType(), msg.getMessageData());
         Object object = new MessageConnectAsOperator();

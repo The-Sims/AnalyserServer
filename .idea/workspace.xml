@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66fac012-efe9-4ab5-861b-84e80acb66dc" name="Default" comment="Changes in Incident and REST&#10;Next stop: Unit tests">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/communication/messagehandlers/MessageUpdateIncidentHandler.java" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/stubs/ServerWebsocketStub.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/clienthandler/ClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/clienthandler/ClientHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/clienthandler/IClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/clienthandler/IClientHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/communication/messagehandlers/MessageHandlerFactory.java" afterPath="$PROJECT_DIR$/src/main/java/communication/messagehandlers/MessageHandlerFactory.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/communication/messages/EncapsulatingMessage.java" afterPath="$PROJECT_DIR$/src/main/java/communication/messages/EncapsulatingMessage.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/communication/rest/RESTClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/communication/rest/RESTClientHandler.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/communication/websockets/ServerWebsocket.java" afterPath="$PROJECT_DIR$/src/main/java/communication/websockets/ServerWebsocket.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/communication/messages/EncapsulatingMessage.class" afterPath="$PROJECT_DIR$/target/classes/communication/messages/EncapsulatingMessage.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/communication/rest/RESTClientHandler.class" afterPath="$PROJECT_DIR$/target/classes/communication/rest/RESTClientHandler.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/communication/websockets/ServerWebsocket.class" afterPath="$PROJECT_DIR$/target/classes/communication/websockets/ServerWebsocket.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/IncidentDescription.java" afterPath="$PROJECT_DIR$/src/main/java/models/IncidentDescription.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/ReinforceInfo.java" afterPath="$PROJECT_DIR$/src/main/java/models/ReinforceInfo.java" />
+      <change beforePath="$PROJECT_DIR$/target/classes/clienthandler/ClientHandler.class" afterPath="$PROJECT_DIR$/target/classes/clienthandler/ClientHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/clienthandler/IClientHandler.class" afterPath="$PROJECT_DIR$/target/classes/clienthandler/IClientHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/communication/messagehandlers/MessageHandlerFactory.class" afterPath="$PROJECT_DIR$/target/classes/communication/messagehandlers/MessageHandlerFactory.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,11 +26,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ServerWebsocket.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServerWebsocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/communication/websockets/ServerWebsocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="27" column="57" lean-forward="true" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+            <state relative-caret-position="273">
+              <caret line="29" column="61" lean-forward="false" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IncidentDescription.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/IncidentDescription.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReinforceInfo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/ReinforceInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -95,8 +112,6 @@
         <option value="$PROJECT_DIR$/src/main/java/communication/messages/sharedmessages/MessageTip.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Origin.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Tip.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/ReinforceInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/IncidentDescription.java" />
         <option value="$PROJECT_DIR$/src/main/java/communication/rest/IREST.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Category.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -107,13 +122,15 @@
         <option value="$PROJECT_DIR$/src/main/java/AnalyserServer.java" />
         <option value="$PROJECT_DIR$/src/test/java/stubs/ServerWebsocketStub.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/communication/rest/RESTClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/communication/messages/EncapsulatingMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/communication/websockets/ServerWebsocket.java" />
         <option value="$PROJECT_DIR$/src/main/java/communication/messagehandlers/MessageHandlerFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/communication/messagehandlers/MessageUpdateIncidentHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/clienthandler/IClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/clienthandler/ClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/communication/rest/RESTClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/communication/websockets/ServerWebsocket.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/IncidentDescription.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/ReinforceInfo.java" />
       </list>
     </option>
   </component>
@@ -143,7 +160,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -330,8 +346,9 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -517,7 +534,8 @@
       <workItem from="1547023194013" duration="4036000" />
       <workItem from="1547120082710" duration="2191000" />
       <workItem from="1547457128365" duration="5541000" />
-      <workItem from="1547500622564" duration="2545000" />
+      <workItem from="1547500622564" duration="2736000" />
+      <workItem from="1547540593504" duration="5383000" />
     </task>
     <task id="LOCAL-00001" summary="Changes in Incident and REST&#10;Next stop: Unit tests">
       <created>1547028173398</created>
@@ -526,11 +544,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547028173398</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="UpdateIncident fixed">
+      <created>1547503478155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1547503478156</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112399000" />
+    <option name="totallyTimeSpent" value="117973000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -554,20 +579,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5177229" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26279864" sideWeight="0.48227713" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287827" sideWeight="0.49570355" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26279864" sideWeight="0.48227713" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.49570355" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24274974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24650913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993174" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993174" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -585,7 +610,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changes in Incident and REST&#10;Next stop: Unit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Incident and REST&#10;Next stop: Unit tests" />
+    <MESSAGE value="UpdateIncident fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="UpdateIncident fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -722,20 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/ReinforceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/IncidentDescription.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="6" lean-forward="true" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logger/LogLevel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -769,6 +781,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="779">
           <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -796,14 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/communication/rest/RESTClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logger/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -816,6 +823,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#470#471#0" expanded="false" />
+            <element signature="e#516#517#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -882,7 +893,7 @@
         <state relative-caret-position="315">
           <caret line="15" column="43" lean-forward="false" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -900,15 +911,39 @@
         <state relative-caret-position="231">
           <caret line="11" column="57" lean-forward="false" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/communication/rest/RESTClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/communication/websockets/ServerWebsocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="27" column="57" lean-forward="true" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+        <state relative-caret-position="273">
+          <caret line="29" column="61" lean-forward="false" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/IncidentDescription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/ReinforceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
           <folding />
         </state>
       </provider>

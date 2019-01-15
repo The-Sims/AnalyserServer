@@ -4,6 +4,6 @@ import java.util.Date;
 
 public class ReinforceInfo {
     int id;
-    String reinforceInfo;
+    String message;
     Date date;
 }
